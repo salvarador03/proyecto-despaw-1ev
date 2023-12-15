@@ -1,6 +1,6 @@
 <?php
 
-use Vidamrr\Gastos\model\Expense;
+use Gastos\model\Expense;
 
 $expenses = Expense::getAll();
 $total = Expense::getTotal($expenses);

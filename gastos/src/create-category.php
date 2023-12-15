@@ -1,6 +1,6 @@
 <?php
 
-use Vidamrr\Gastos\model\Category;
+use Gastos\model\Category;
 
 if (isset($_POST['name'])) {
     $name = $_POST['name'];

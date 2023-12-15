@@ -1,0 +1,11 @@
+docker-compose build --no-cache
+docker build -t web-proyecto .
+sudo docker stop contenedor-proyecto
+sudo docker rm contenedor-proyecto
+sudo docker run --name contenedor-proyecto -p 443:443 web-proyecto
+
+docker exec -it contenedor-proyecto bash
+docker exec -it gastos-db-1 bash
+docker-compose up -d
+docker logs gastos-db-1
+docker ps

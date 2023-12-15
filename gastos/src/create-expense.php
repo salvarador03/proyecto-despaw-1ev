@@ -1,7 +1,7 @@
 <?php
 
-use Vidamrr\Gastos\model\Expense;
-use Vidamrr\Gastos\model\Category;
+use Gastos\model\Expense;
+use Gastos\model\Category;
 
 if (isset($_POST['title']) && isset($_POST['expense']) && isset($_POST['category_id'])) {
     $title = $_POST['title'];

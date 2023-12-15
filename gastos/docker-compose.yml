@@ -5,42 +5,49 @@ services:
   web:
     build: .
     ports:
-      - "443:443" # Uso el puerto 443 del contenedor
+      - "443:443"
     volumes:
-      - ./src:/var/www/html # Para cargar el código de la aplicación gastos/
-      - ./error_pages:/var/www/error_pages # Para cargar las páginas de error 404.html y 500.html
-      - ./ssl:/etc/ssl/private # Para cargar los certificados SSL (HTTPS)
-      - ./configuracion-proyecto.conf:/etc/apache2/sites-available/000-default.conf # Para usar la configuración de apache personalizada
+      - ./src:/var/www/html
+      - ./error_pages:/var/www/error_pages
+      - ./ssl:/etc/ssl/private
+      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
     depends_on:
-      - db 
+      - db
 
   # Servicio de base de datos MySQL
   db:
-    image: mariadb:11.1 # Usa la imagen de MariaDB versión 11.1
+    image: mariadb:11.1
+    networks:
+      - mynetwork
     environment:
-      MYSQL_ROOT_PASSWORD: password  
-      MYSQL_DATABASE: gastos 
-      MYSQL_USER: root 
-      MYSQL_PASSWORD: password 
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: gastos
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
     volumes:
-      - db_data:/var/lib/mysql # Para hacer la persistencia de datos de la base de datos
-      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql # Para ejecutar el script schema.sql
+      - db_data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql 
     ports:
-      - "3306:3306" # Uso el puerto 3306 del contenedor
+      - "3306:3306"
 
   # Servicio phpMyAdmin para la administración de la base de datos
   phpmyadmin:
-    image: phpmyadmin # Usa la imagen oficial de phpMyAdmin phpmyadmin/phpmyadmin
-    environment:
-      PMA_HOST: db # Indica a phpMyAdmin que se conecte al servicio db MySQL (mariadb)
-      PMA_USER: root 
-      PMA_PASSWORD: password 
+    image: phpmyadmin/phpmyadmin
+    networks:
+      - mynetwork
     ports:
-      - "8080:80" # Uso el puerto 8080 del contenedor
+      - "8080:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=password
     depends_on:
-      - db 
+      - db
+
 
 volumes:
-  db_data: # Esto sirve para la persistencia de los datos 
+  db_data:
+
+
 
 
