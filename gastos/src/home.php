@@ -1,6 +1,6 @@
 <?php
 
-use Gastos\model\Expense;
+use App\model\Expense;
 
 $expenses = Expense::getAll();
 $total = Expense::getTotal($expenses);

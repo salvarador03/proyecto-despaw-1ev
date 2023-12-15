@@ -44,10 +44,8 @@ services:
     depends_on:
       - db
 
+networks:
+  mynetwork:
 
 volumes:
   db_data:
-
-
-
-

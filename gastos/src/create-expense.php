@@ -1,7 +1,7 @@
 <?php
 
-use Gastos\model\Expense;
-use Gastos\model\Category;
+use App\model\Expense;
+use App\model\Category;
 
 if (isset($_POST['title']) && isset($_POST['expense']) && isset($_POST['category_id'])) {
     $title = $_POST['title'];

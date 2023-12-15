@@ -1,8 +1,8 @@
 <?php
 
-namespace Gastos\model;
+namespace App\model;
 
-use Gastos\lib\Database;
+use App\lib\Database;
 use PDO;
 
 class Category extends Database

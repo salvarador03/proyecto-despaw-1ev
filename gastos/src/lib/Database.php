@@ -1,6 +1,6 @@
 <?php
 
-namespace Gastos\lib;
+namespace App\lib;
 
 use PDO;
 use PDOException;

@@ -1,6 +1,6 @@
 <?php
 
-use Gastos\model\Category;
+use App\model\Category;
 
 if (isset($_POST['name'])) {
     $name = $_POST['name'];

@@ -1,8 +1,8 @@
 {
-    "name": "vidamrr/gastos",
+    "name": "mi-proyecto/gastos",
     "autoload": {
         "psr-4": {
-            "Vidamrr\\Gastos\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [

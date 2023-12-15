@@ -1,9 +1,9 @@
 <?php
 
-namespace Gastos\model;
+namespace App\model;
 
-use Gastos\lib\Database;
-use Gastos\model\Category;
+use App\lib\Database;
+use App\model\Category;
 use PDO;
 
 class Expense extends Database
